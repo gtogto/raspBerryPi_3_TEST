@@ -10,7 +10,8 @@ int main()
     int fd;
     int data;
 
-    if ((fd == serialOpen ("/dev/ttyAMA0", 115200)) < 0)
+    //if ((fd == serialOpen ("/dev/ttyAMA0", 115200)) < 0)
+	if ((fd == serialOpen ("/dev/ttyS2" , 115200)) < 0)
     {
         fprintf(stderr, "not Opened device : %s\n", strerror(errno));
         return 1;

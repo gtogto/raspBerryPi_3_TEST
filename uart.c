@@ -33,7 +33,7 @@ void uart_ch(char ch)
 {
     int fd;
 
-    if((fd = serialOpen ("/dev/ttyAMA0", 115200)) <0)
+    if((fd = serialOpen ("/dev/ttyS22", 115200)) <0)
     {
         fprintf(stderr, "Unable to start wiringPi: %s\n", strerror (errno));
         return;
