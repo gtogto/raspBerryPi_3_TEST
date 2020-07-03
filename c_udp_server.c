@@ -42,17 +42,17 @@ int main(void)
     recv_buffer[recv_len] = '\0';
     
     printf("ip : %s\n", inet_ntoa(client_addr.sin_addr)); 
-    
+   /* 
     while(1){
        printf("received data ; %s\n", recv_buffer);
        sendto(sock, recv_buffer, strlen(recv_buffer), 0,
           (struct sockaddr *)&client_addr, sizeof(client_addr));
        //return 0;
        //close(sock);    
-    }
-    //printf("received data ; %s\n", recv_buffer); 
-    //sendto(sock, recv_buffer, strlen(recv_buffer), 0, 
-            //(struct sockaddr *)&client_addr, sizeof(client_addr));
+    }*/
+    printf("received data ; %s\n", recv_buffer); 
+    sendto(sock, recv_buffer, strlen(recv_buffer), 0, 
+            (struct sockaddr *)&client_addr, sizeof(client_addr));
     
     //close(sock);
 
