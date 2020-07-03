@@ -1,9 +1,10 @@
 # RaspBerry3 test code -by.gto
-# 2020.05
+# OrangePi Zero test code
+# 2020.07
 ---
 # Info.
 - UART test code
-- UDP test code
+- UDP test code(echo and client)
 ---
 # Target devices.
 - android device(Galaxy S9+)
