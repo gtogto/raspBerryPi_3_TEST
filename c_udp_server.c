@@ -14,7 +14,8 @@ int main(void)
     char recv_buffer[1024]; 
     int recv_len; 
     int addr_len; 
-    
+   	char *exit = "bye";
+
     if((sock = socket(AF_INET, SOCK_DGRAM, 0)) <0)
     { 
         perror("socket "); return 1;
@@ -30,32 +31,38 @@ int main(void)
         return 1;
     } 
     
-    printf("waiting for messages\n");
-    addr_len = sizeof(client_addr);
-    if ((recv_len = recvfrom(sock, recv_buffer, 1024, 0, 
-                    (struct sockaddr *)&client_addr, &addr_len)) < 0)
-    { 
-        perror("recvfrom "); 
-        return 1;
-    } 
+    printf("waiting for messages, if you want program close, send to bye\n");
+	
+	while(1){
+		addr_len = sizeof(client_addr);
+		if ((recv_len = recvfrom(sock, recv_buffer, 1024, 0, 
+			(struct sockaddr *)&client_addr, &addr_len)) < 0)
+		{ 
+			perror("recvfrom "); 
+			return 1;
+		} 
     
-    recv_buffer[recv_len] = '\0';
+	    recv_buffer[recv_len] = '\0';
     
-    printf("ip : %s\n", inet_ntoa(client_addr.sin_addr)); 
-   /* 
-    while(1){
-       printf("received data ; %s\n", recv_buffer);
-       sendto(sock, recv_buffer, strlen(recv_buffer), 0,
-          (struct sockaddr *)&client_addr, sizeof(client_addr));
-       //return 0;
-       //close(sock);    
-    }*/
-    printf("received data ; %s\n", recv_buffer); 
-    sendto(sock, recv_buffer, strlen(recv_buffer), 0, 
-            (struct sockaddr *)&client_addr, sizeof(client_addr));
-    
-    //close(sock);
+    	printf("ip : %s\n", inet_ntoa(client_addr.sin_addr)); 
+	
+		int ret = strcmp(recv_buffer, exit);
+		int end = 0;
 
-    return 0; 
+		if(ret==0){			
+			printf("Goodbye User! \n");
+			end = 1;
+			if (end==1) {
+				break;			
+			}			
+		}
+		else {
+			printf("received data >>>>>>>   %s \n", recv_buffer); 
+			sendto(sock, recv_buffer, strlen(recv_buffer), 0, 
+			(struct sockaddr *)&client_addr, sizeof(client_addr));
+		}
+	}	
+	close(sock);
+    //return 0; 
 }
 
