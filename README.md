@@ -1,6 +1,6 @@
 # RaspBerry3 test code -by.gto
 # OrangePi Zero test code
-# 2020.07
+# 2020.07.15
 ---
 
 # Info.
