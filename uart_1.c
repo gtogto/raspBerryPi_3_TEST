@@ -10,6 +10,9 @@ int main()
     int fd;
     int data;
 
+	char recev_buffer[1024];
+	int recv_len;
+
     //if ((fd == serialOpen ("/dev/ttyAMA0", 115200)) < 0)
 	if ((fd == serialOpen ("/dev/ttyS2" , 115200)) < 0)
     {
@@ -17,7 +20,8 @@ int main()
         return 1;
     }
 
-    printf("\n Raspberry Pi testing ... ");
+    //printf("\n Raspberry Pi testing ... ");
+	printf("\n Orange Pi testing ... ");
 
     while(1)
     {
