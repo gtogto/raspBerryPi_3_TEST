@@ -21,8 +21,8 @@ int main(void)
     while(1)
     {
         scanf("%s", str1);
-        getchar();
-        sprintf(str,"%s\n\r", str1);
+        getchar();		
+        sprintf(str,"send data : %s\n\r", str1);
         uart_str(str);
     }
 
