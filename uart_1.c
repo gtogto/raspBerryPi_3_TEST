@@ -14,7 +14,7 @@ int main()
 	int recv_len;
 
     //if ((fd == serialOpen ("/dev/ttyAMA0", 115200)) < 0)
-	if ((fd == serialOpen ("/dev/ttyS2" , 115200)) < 0)
+	if ((fd == serialOpen ("/dev/ttyS3" , 115200)) < 0)
     {
         fprintf(stderr, "not Opened device : %s\n", strerror(errno));
         return 1;
